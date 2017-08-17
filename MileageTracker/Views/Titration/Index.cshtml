@@ -1,0 +1,38 @@
+﻿@model MileageTracker.Models.TData
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Titration Calculator";
+}
+
+<div class="jumbotron">
+    <h3>Determine the Percentage of acetic acid present in vinegar solution.</h3>
+    <p class="lead">
+        Add Baking Soda slowly to a <b>known</b> amount of vinegar until fizzling stops. 
+        Accurately record the amount added.<br/> measurements are in mL and grams respectively</p>
+    
+</div>
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Submit", "Titration", FormMethod.Post))
+{
+   
+
+    <p>
+        Mass Acid: @Html.EditorFor(model => model.unknown, new { htmlAttributes = new { @class = "form-control" } })
+ 
+        
+        <br/>
+        Mass Base: @Html.EditorFor(model => model.mbase, new { htmlAttributes = new { @class = "form-control" } })
+        <br/>
+        <input type="submit" value="Save" class="btn btn-default" />
+       
+    </p>
+    <h3>@Html.DisplayFor(model => model.result)  @ViewBag.message</h3>
+}
+
+ 
